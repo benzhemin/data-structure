@@ -1,11 +1,13 @@
 #ifndef _LINER_LINK_H
 #define _LINER_LINK_H
 
-typedef ElemType int;
+#include "../predef.h"
+
+typedef int ElemType;
 
 typedef struct _Node{
 	ElemType data;
-	struct _Node *next
+	struct _Node *next;
 } Node;
 
 //get the element at index
@@ -22,5 +24,8 @@ void create_linerlink(Node **header, int n);
 
 //merge la lb to lc
 void merge_linerlink(Node *La, Node *Lb, Node **Lc);
+
+//print all
+void print_linerlink(Node *L);
 
 #endif

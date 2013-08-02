@@ -91,3 +91,14 @@ void merge_linerlink(Node *La, Node *Lb, Node **Lc){
 	
 	free(Lb);
 }
+
+void print_linerlink(Node *L){
+	Node *p = L->next;
+	
+	while(p!=NULL){
+		printf("%d ", p->data);
+		p = p->next;
+	}
+	
+	printf("\n");
+}
