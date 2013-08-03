@@ -60,6 +60,24 @@ void create_linerlink(Node **header, int n){
 	Node *s = (Node *)malloc(sizeof(Node));
 	s->next = NULL;
 	*header = s;
+	Node *tail = *header;
+	
+	int i, d;
+	for(i=0; i<n; i++){
+		scanf("%d", &d);
+		Node *p = (Node *)malloc(sizeof(Node));
+		p->next = NULL;
+		p->data = d;
+		
+		tail->next = p;
+		tail = p;
+	}
+}
+
+void create_reverse_linerlink(Node **header, int n){
+	Node *s = (Node *)malloc(sizeof(Node));
+	s->next = NULL;
+	*header = s;
 	
 	int i;
 	for(i=0; i<n; i++){
@@ -101,4 +119,15 @@ void print_linerlink(Node *L){
 	}
 	
 	printf("\n");
+}
+
+void destory_linerlink(Node **root){
+	Node *fp, *p;
+	p = *root;
+	while(p!=NULL){
+		fp = p;
+		p = p->next;
+		free(fp);
+	}
+	*root = NULL;
 }
