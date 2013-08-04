@@ -17,6 +17,9 @@ typedef struct _SqList{
 //initialize liner
 Status init_linerseq(SqList *sq);
 
+//destory liner
+void destory_linerseq(SqList *sq);
+
 //insert element to linerSeq
 Status insert_linerseq(SqList *sq, int index, ElemType e);
 
@@ -25,5 +28,7 @@ Status delete_linerseq(SqList *sq, int index, ElemType *e);
 
 //cmp element int linerSeq
 Status locate_elem_linerseq(SqList *sq, int e, CMP_ELEM cmp_elem);
+
+Status mearge_linerseq(SqList *la, SqList *lb, SqList *lc);
 
 #endif

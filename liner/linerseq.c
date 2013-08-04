@@ -14,6 +14,10 @@ Status init_linerseq(SqList *sq){
 	return OK;	
 }
 
+void destory_linerseq(SqList *sq){
+	free(sq->elem);
+}
+
 Status insert_linerseq(SqList *sq, int index, ElemType e){
 	if(sq->length >= sq->listsize){
 		sq->elem = (ElemType *)realloc(sq->elem, (sq->listsize+LIST_INCREMENT)*sizeof(ElemType));
@@ -75,8 +79,4 @@ Status mearge_linerseq(SqList *la, SqList *lb, SqList *lc){
 	while(pb<lb->elem+lb->length){
 		*pc++ = *pb++;
 	}
-}
-
-int main(void){
-	
 }
