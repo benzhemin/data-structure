@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+//在有序链表中插入元素
+//直观的头节点方式
 void insert_value(Node *p, int value){
 	Node *pre = p;
 	Node *cur = p->next;
@@ -16,6 +18,8 @@ void insert_value(Node *p, int value){
 	pre->next = s;
 }
 
+//在有序链表中插入元素
+//利用C语言的取地址技巧
 void insert_quote_value(Node **root, int value){
 	Node **p = root;
 	while(*p!=NULL && (*p)->data<value){

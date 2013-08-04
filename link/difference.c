@@ -2,6 +2,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/* Question description
+ * LinkA, LinkB 递增有序, 元素个数分别为m,n, 求A和B的差集 A-B, 差集保存在A中
+*/
+
 //find differences and remove it from linkA
 void difference_link(Node **linkA, Node **linkB){
 	Node *pre_pa = *linkA;
@@ -38,6 +42,8 @@ int main(void){
 	difference_link(&linkA, &linkB);
 	print_linerlink(linkA);
 	
+	destory_linerlink(&linkA);
+	destory_linerlink(&linkB);
 	
 	return 0;
 }
