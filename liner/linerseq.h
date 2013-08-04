@@ -1,6 +1,8 @@
 #ifndef _LINER_SEQ_H
 #define _LINER_SEQ_H
 
+#include "../predef.h"
+
 #define LIST_INIT_SIZE 100
 #define LIST_INCREMENT 10
 
@@ -21,7 +23,11 @@ Status init_linerseq(SqList *sq);
 void destory_linerseq(SqList *sq);
 
 //insert element to linerSeq
+//index starts from 1
 Status insert_linerseq(SqList *sq, int index, ElemType e);
+
+//copy array contents to linerseq
+void cp_array_linerseq(SqList *sq, ElemType *array, int len);
 
 //delete element in linerSeq
 Status delete_linerseq(SqList *sq, int index, ElemType *e);
@@ -34,5 +40,8 @@ Status mearge_linerseq(SqList *la, SqList *lb, SqList *lc);
 
 //insertion sort, sort from begin, total len elements
 void sort_insertion(SqList *la, int begin, int len);
+
+//print all elements
+void print_linerseq(SqList *sq);
 
 #endif

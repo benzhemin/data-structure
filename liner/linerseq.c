@@ -18,7 +18,15 @@ void destory_linerseq(SqList *sq){
 	free(sq->elem);
 }
 
+void cp_array_linerseq(SqList *sq, ElemType *array, int len){
+	int i;
+	for(i=0; i<len; i++){
+		insert_linerseq(sq, (sq->length+1), array[i]);
+	}
+}
+
 Status insert_linerseq(SqList *sq, int index, ElemType e){
+	assert(index>0);
 	if(sq->length >= sq->listsize){
 		sq->elem = (ElemType *)realloc(sq->elem, (sq->listsize+LIST_INCREMENT)*sizeof(ElemType));
 		if(sq->elem == NULL){
@@ -81,6 +89,14 @@ Status mearge_linerseq(SqList *la, SqList *lb, SqList *lc){
 	}
 }
 
+void print_linerseq(SqList *sq){
+	int i;
+	for(i=0; i<sq->length; i++){
+		printf("%d ", *(sq->elem+i));
+	}
+	printf("\n");
+}
+
 void sort_insertion(SqList *la, int begin, int len){
 	//设置起始偏移位置
 	ElemType *elem = la->elem + begin;
@@ -90,8 +106,9 @@ void sort_insertion(SqList *la, int begin, int len){
 		for(j=0; j<i; j++){
 			if(*(elem+i) < *(elem+j)){
 				ElemType d = *(elem+i);
-				memmove(elem+j+1,elem+j, i-j);
+				memmove(elem+j+1,elem+j, (i-j)*sizeof(ElemType));
 				*(elem+j) = d;
+				break;
 			}
 		}
 	}
