@@ -2,7 +2,7 @@
 #include "linerseq.h"
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <string.h>
 
 Status init_linerseq(SqList *sq){	
 	sq->elem = (ElemType *)malloc(sizeof(ElemType)*LIST_INIT_SIZE);
@@ -78,5 +78,21 @@ Status mearge_linerseq(SqList *la, SqList *lb, SqList *lc){
 	}
 	while(pb<lb->elem+lb->length){
 		*pc++ = *pb++;
+	}
+}
+
+void sort_insertion(SqList *la, int begin, int len){
+	//设置起始偏移位置
+	ElemType *elem = la->elem + begin;
+	int i, j;
+	//0是第一个元素, 从第二个元素开始插入
+	for(i=1; i<len; i++){
+		for(j=0; j<i; j++){
+			if(*(elem+i) < *(elem+j)){
+				ElemType d = *(elem+i);
+				memmove(elem+j+1,elem+j, i-j);
+				*(elem+j) = d;
+			}
+		}
 	}
 }

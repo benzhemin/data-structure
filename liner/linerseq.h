@@ -29,6 +29,10 @@ Status delete_linerseq(SqList *sq, int index, ElemType *e);
 //cmp element int linerSeq
 Status locate_elem_linerseq(SqList *sq, int e, CMP_ELEM cmp_elem);
 
+//merge two linerseq
 Status mearge_linerseq(SqList *la, SqList *lb, SqList *lc);
+
+//insertion sort, sort from begin, total len elements
+void sort_insertion(SqList *la, int begin, int len);
 
 #endif
