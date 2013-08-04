@@ -8,6 +8,7 @@
  * 设计一个算法,使整个顺序表有序(原地排序,只借助一个元素的辅助空间)
 */
 
+//memmove 第三个参数对应字节
 void order_linerseq(SqList *L, int m, int n){
 	int *pm = L->elem;
 	int *pn = L->elem + m;
@@ -18,6 +19,7 @@ void order_linerseq(SqList *L, int m, int n){
 			memmove(pm+1, pm, (pn-pm)*sizeof(ElemType));
 			*pm = temp;
 			++pn;
+			
 			//当有元素插入到m范围的数组中时,要扩大m的范围
 			++m;
 			print_linerseq(L);
