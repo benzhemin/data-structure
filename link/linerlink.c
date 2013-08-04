@@ -121,6 +121,17 @@ void print_linerlink(Node *L){
 	printf("\n");
 }
 
+/*
+void destory_linerlink(Node *header){
+	while(header != NULL){
+		Node *p = header;
+		header = header->next;
+		free(p);
+	}
+}
+*/
+
+//invoke destory_linerlink(&header);
 void destory_linerlink(Node **root){
 	Node *fp, *p;
 	p = *root;
