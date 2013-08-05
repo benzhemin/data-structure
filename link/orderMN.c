@@ -1,25 +1,12 @@
 #include "linerseq.h"
 
+/*
+ * 顺序表L,将L中所有小于表头元素的证书放在前半部分,大于的整数放在后半部分,数组下标从1开始存储
+*/
+
 int main(void){
 	SqList L;
 	init_linerseq(&L);
-	
-	//pre m element;
-	int i, m, n, d;
-	printf("input m");
-	scanf("%d", &m);
-	for(i=0; i<m; i++){
-		scanf("%d", &d);
-		insert_linerseq(&L, i, d);
-	}
-	
-	//n elements
-	printf("input n");
-	scanf("%d", &n);
-	for(i=0; i<n; i++){
-		scanf("%d", &n);
-		insert_linerseq(&L, m+i, d);
-	}
 	
 	
 }
