@@ -16,6 +16,17 @@ Status get_link_elem(Node *header, int index, ElemType *e){
 	return ERROR;
 }
 
+void cp_array_link(Node *header, ElemType *array, int len){
+	int i;
+	for(i=0; i<len; i++){
+		Node *s = (Node *)malloc(sizeof(Node));
+		s->data = array[i];
+		s->next = NULL;
+		header->next = s;
+		header = header->next;
+	}
+}
+
 Status insert_linerlink(Node *header, int index, ElemType e){
 	int i=1;
 	Node *p = header;
