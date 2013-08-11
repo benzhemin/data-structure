@@ -19,6 +19,10 @@ Status init_queue(QueueLink *Q);
 
 Status destory_queue(QueueLink *Q);
 
+BOOL empty_queue(QueueLink *Q);
 
+Status enqueue(QueueLink *Q, ElemType e);
+
+Status dequeue(QueueLink *Q, ElemType *e);
 
 #endif
