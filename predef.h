@@ -11,6 +11,7 @@
 #define OVERFLOW -2
 
 typedef int Status;
+typedef int BOOL;
 
 #define ARRAY_LEN(x) sizeof(x)/sizeof(x[0])
 
