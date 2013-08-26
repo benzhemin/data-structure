@@ -57,7 +57,7 @@ void value_express(char *a, SqStack *operand, SqStack *operator){
 int main(void){
 	char a[EXPRESSION_MAX_LEN];
 	
-	input_express(a);
+	input_express(a, &len);
 	
 	//操作数 
 	SqStack operand_stack; 
