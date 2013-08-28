@@ -21,13 +21,16 @@ BOOL empty_stack(SqStack *S){
 	return S->base == S->top;
 }
 
-Status get_top(SqStack *S, ElemType *e){
-	if(empty_stack(S)){
-		return ERROR;
-	}
+ElemType get_top(SqStack *S){
+	assert(!empty_stack(S));
 	
-	*e = *(S->top-1);
-	return OK;
+	return *(S->top-1);
+}
+
+ElemType pop(SqStack *S){
+	assert(!empty_stack(S));
+	
+	return *(--S->top);
 }
 
 Status push(SqStack *S, ElemType e){
@@ -39,15 +42,6 @@ Status push(SqStack *S, ElemType e){
 	}
 	
 	*S->top++ = e;
-	return OK;
-}
-
-Status pop(SqStack *S, ElemType *e){
-	if(empty_stack(S)){
-		return ERROR;
-	}
-	
-	*e = *--S->top;
 	return OK;
 }
 

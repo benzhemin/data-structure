@@ -20,11 +20,11 @@ Status empty_stack(SqStack *S);
 
 void clear_stack(SqStack *S);
 
-Status get_top(SqStack *S, ElemType *e);
+ElemType get_top(SqStack *S);
+
+ElemType pop(SqStack *S);
 
 Status push(SqStack *S, ElemType e);
-
-Status pop(SqStack *S, ElemType *e);
 
 Status destory_stack(SqStack *S);
 
