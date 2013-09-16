@@ -6,7 +6,22 @@
 #define STACK_INIT_SIZE 100
 #define STACK_INCREMENT 10
 
-typedef int ElemType;
+//typedef int ElemType;
+typedef enum _Di{
+	Right = 0,
+	Down,
+	Left,
+	Up,
+	Di_UnDef,
+} Di;
+
+typedef struct _Point{
+	int row;
+	int col;
+	Di di;
+} Point;
+
+typedef Point ElemType;
 
 typedef struct{
 	ElemType *top;
