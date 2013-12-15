@@ -71,26 +71,6 @@ Status locate_elem_linerseq(SqList *sq, int e, CMP_ELEM cmp_elem){
 	return p-sq->elem;
 }
 
-Status mearge_linerseq(SqList *la, SqList *lb, SqList *lc){
-	ElemType *pa = la->elem;
-	ElemType *pb = lb->elem;
-	ElemType *pc = lc->elem;
-	lc->listsize = lc->length = la->length + lb->length;
-	
-	while(pa<la->elem+la->length && pb<lb->elem+lb->length){
-		if(*pa <= *pb)
-			*pc++=*pa++;
-		else
-			*pc++=*pb++; 
-	}
-	while(pa<la->elem+la->length){
-		*pc++ = *pa++;
-	}
-	while(pb<lb->elem+lb->length){
-		*pc++ = *pb++;
-	}
-}
-
 void print_linerseq(SqList *sq){
 	ElemType *p;
 	for(p=sq->elem; p<sq->elem+sq->length; p++){
