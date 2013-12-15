@@ -35,8 +35,8 @@ Status insert_linerseq(SqList *sq, int index, ElemType e){
 		sq->listsize += LIST_INCREMENT;
 	}
 	ElemType *p, *q;
-	q = &(sq->elem[index-1]);
-	for(p=&(sq->elem[sq->length-1]); p>=q; p--){
+	q = sq->elem+index-1;
+	for(p=sq->elem+sq->length-1; p>=q; p--){
 		*(p+1) = *p;
 	}
 	*q = e;
@@ -51,7 +51,7 @@ Status delete_linerseq(SqList *sq, int index, ElemType *e){
 	ElemType *p, *q;
 	p = sq->elem+index-1;
 	*e = *p;
-	for(q=&(sq->elem[sq->length-1]); p<q; p++){
+	for(q=sq->elem+sq->length-1; p<q; p++){
 		*p = *(p+1);
 	}
 	--sq->length;
