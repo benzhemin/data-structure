@@ -18,15 +18,7 @@ void destory_linerseq(SqList *sq){
 	free(sq->elem);
 }
 
-void cp_array_linerseq(SqList *sq, ElemType *array, int len){
-	int i;
-	for(i=0; i<len; i++){
-		insert_linerseq(sq, (sq->length+1), array[i]);
-	}
-}
-
-Status insert_linerseq(SqList *sq, int index, ElemType e){
-	assert(index>0);
+void check_needs_expand(SqList *sq){
 	if(sq->length >= sq->listsize){
 		sq->elem = (ElemType *)realloc(sq->elem, (sq->listsize+LIST_INCREMENT)*sizeof(ElemType));
 		if(sq->elem == NULL){
@@ -34,6 +26,23 @@ Status insert_linerseq(SqList *sq, int index, ElemType e){
 		}
 		sq->listsize += LIST_INCREMENT;
 	}
+}
+
+void cp_array_linerseq(SqList *sq, ElemType *array, int len){
+	int i;
+	for(i=0; i<len; i++){
+		insert_linerseq(sq, array[i]);
+	}
+}
+
+Status insert_linerseq(SqList *sq, ElemType e){
+	return insert_linerseq_index(sq, sq->length+1, e);
+}
+
+Status insert_linerseq_index(SqList *sq, int index, ElemType e){
+	assert(index>0);
+	check_needs_expand(sq);
+
 	ElemType *p, *q;
 	q = sq->elem+index-1;
 	for(p=sq->elem+sq->length-1; p>=q; p--){
@@ -74,7 +83,7 @@ Status locate_elem_linerseq(SqList *sq, int e, CMP_ELEM cmp_elem){
 void print_linerseq(SqList *sq){
 	ElemType *p;
 	for(p=sq->elem; p<sq->elem+sq->length; p++){
-		printf("%d", *p);
+		printf("%d ", *p);
 	}
 	printf("\n");
 }

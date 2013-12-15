@@ -22,9 +22,15 @@ Status init_linerseq(SqList *sq);
 //destory liner
 void destory_linerseq(SqList *sq);
 
+//check if needs expand
+void check_needs_expand(SqList *sq);
+
+//insert at tail
+Status insert_linerseq(SqList *sq, ElemType e);
+
 //insert element to linerSeq
 //index starts from 1
-Status insert_linerseq(SqList *sq, int index, ElemType e);
+Status insert_linerseq_index(SqList *sq, int index, ElemType e);
 
 //copy array contents to linerseq
 void cp_array_linerseq(SqList *sq, ElemType *array, int len);
