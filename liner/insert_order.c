@@ -33,6 +33,22 @@ void insert_order(SqList *sq, ElemType e){
 
 }
 
+//删除顺序表下标为p（1<=p<=length)的元素，成功返回1，否则返回0，并将被删除的值赋给e
+Status delete_index(SqList *sq, int index, ElemType *e){
+	if (index<1 || index>sq->length){
+		return 0;
+	}
+
+	ElemType *p = sq->elem +index;
+	*e = *(p - 1);
+	for(; p<sq->elem+sq->length; p++){
+		*(p-1) = *p;
+	}
+	sq->length--;
+
+	return 1;
+}
+
 int main(void){
 	int a[] = {1, 2, 4, 6, 7, 8, 8, 10};
 
@@ -44,6 +60,14 @@ int main(void){
 	int d;
 	scanf("%d", &d);
 	insert_order(&sq, d);
+
+	printf("delete index:\n");
+	scanf("%d", &d);
+
+	delete_index(&sq, d, &d);
+	print_linerseq(&sq);
+
+	printf("deleted:%d\n", d);
 
 	return 0;
 }
