@@ -59,14 +59,16 @@ Status delete_linerseq(SqList *sq, int index, ElemType *e){
 }
 
 Status locate_elem_linerseq(SqList *sq, int e, CMP_ELEM cmp_elem){
-	int i=1;
 	ElemType *p = sq->elem;
-	while(i<=sq->length && cmp_elem(*p++, e)!=0);
-	
-	if(i>sq->length){
-		return 0;
+	ElemType *q = sq->elem+sq->length;
+
+	for(; p<q && cmp_elem(*p, e)!=0; p++);
+
+	if (p>=q){
+		return ERROR;
 	}
-	return i;
+
+	return p-sq->elem;
 }
 
 Status mearge_linerseq(SqList *la, SqList *lb, SqList *lc){
@@ -90,9 +92,9 @@ Status mearge_linerseq(SqList *la, SqList *lb, SqList *lc){
 }
 
 void print_linerseq(SqList *sq){
-	int i;
-	for(i=0; i<sq->length; i++){
-		printf("%d ", *(sq->elem+i));
+	ElemType *p;
+	for(p=sq->elem; p<sq->elem+sq->length; p++){
+		printf("%d", *p);
 	}
 	printf("\n");
 }

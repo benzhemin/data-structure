@@ -30,6 +30,7 @@ BOOL reach_end(Point p){
 	return FALSE;
 }
 
+//是否访问过当前节点
 BOOL has_visited(Point p){
 	ElemType *top = stack.top;
 	while(top != stack.base){
@@ -41,9 +42,9 @@ BOOL has_visited(Point p){
 	return FALSE;
 }
 
-BOOL find_next_point(Point p, Point *nextPoint){
-	Point nextp = p;
-	switch(p.di){
+BOOL find_next_point(Point *p, Point *nextPoint){
+	Point nextp = *p;
+	switch(nextp.di){
 		case Right:
 			++nextp.col;
 			break;
@@ -66,7 +67,7 @@ BOOL find_next_point(Point p, Point *nextPoint){
 		
 		return TRUE;
 	}else{
-		p.di++;
+		(p->di)++;
 		return find_next_point(p, nextPoint);
 	}
 }
@@ -88,11 +89,13 @@ void find_way_out(){
 	push(&stack, start);
 	
 	Point nextp;
+	//栈不空，且没到达终点
 	while(!empty_stack(&stack) && !reach_end(get_top(&stack))){
-		Point p = get_top(&stack);
+		//取当前位置
+		Point *p = stack.top-1;
+		//是否存在符合规则的下一个位置
 		if(find_next_point(p, &nextp)){
 			push(&stack, nextp);
-			printf("%d, %d\n", nextp.row, nextp.col);
 		}else{
 			pop(&stack);
 			//栈的top节点要变换方向,因为上一个方向是一条死路
