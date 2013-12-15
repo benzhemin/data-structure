@@ -49,7 +49,7 @@ Status delete_linerseq(SqList *sq, int index, ElemType *e){
 		return ERROR;
 	}
 	ElemType *p, *q;
-	p = &(sq->elem[index-1]);
+	p = sq->elem+index-1;
 	*e = *p;
 	for(q=&(sq->elem[sq->length-1]); p<q; p++){
 		*p = *(p+1);
