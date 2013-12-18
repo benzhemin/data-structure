@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "linerseq.h"
 
+//有序表中插入元素
 void insert_order(SqList *sq, ElemType e){
 	check_needs_expand(sq);
 
@@ -33,6 +34,21 @@ void insert_order(SqList *sq, ElemType e){
 
 }
 
+//第i个位置之前插入元素
+//1<=i<=length+1
+void insert_index(SqList *sq, int index, ElemType e){
+	check_needs_expand(sq);
+
+	//插入位置
+	ElemType *q = sq->elem+index-1;
+	ElemType *p;
+	for(p=sq->elem+sq->length; p>q; --p){
+		*p = *(p-1);
+	}
+	*q = e;
+	sq->length++;
+}
+
 //删除顺序表下标为p（1<=p<=length)的元素，成功返回1，否则返回0，并将被删除的值赋给e
 Status delete_index(SqList *sq, int index, ElemType *e){
 	if (index<1 || index>sq->length){
@@ -48,6 +64,8 @@ Status delete_index(SqList *sq, int index, ElemType *e){
 
 	return 1;
 }
+
+
 
 int main(void){
 	int a[] = {1, 2, 4, 6, 7, 8, 8, 10};
