@@ -15,13 +15,7 @@ void merge_list(Node *la, Node *lb, Node **lc){
 		}
 	}
 
-	if(la!=NULL){
-		*lc = la;
-	}
-
-	if(lb!=NULL){
-		*lc = lb;
-	}
+	*lc = la ? la:lb;
 }
 
 int main(void){
