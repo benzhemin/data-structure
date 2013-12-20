@@ -2,11 +2,19 @@
 #include <stdlib.h>
 #include "link.h"
 
-void reverse(Node **root){
-	Node *p;
+void reverse(Node **proot){
+	Node *p = *proot;
 	Node *header = NULL;
 
-	for(p=*root; p!=NULL; )
+	while(p!=NULL){
+		Node *pre = p;
+		p = p->next;
+
+		pre->next = header;
+		header = pre;
+	}
+
+	*proot = header;
 }
 
 int main(void){
