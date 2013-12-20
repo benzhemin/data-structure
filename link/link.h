@@ -16,6 +16,15 @@ void create_link(Node **header, int n);
 //copy array to link
 void cp_array_link(Node **header, ElemType *array, int len);
 
+//在单链表中第i个位置之前插入元素e
+Status insert_index_link(Node **root, int index, ElemType e);
+
+//删除第i个元素
+Status delete_index_link(Node **root, int index, ElemType *e);
+
+//get elem at index
+Status elem_at_index(Node *L, int index,  ElemType *e);
+
 //print all
 void print_link(Node *L);
 
