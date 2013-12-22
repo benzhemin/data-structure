@@ -6,6 +6,8 @@
 #define LIST_INIT_SIZE 100
 #define LIST_INCREMENT 10
 
+typedef int ElemType;
+
 typedef Status (*CMP_ELEM)(ElemType e1, ElemType e2);
 
 typedef struct _SqList{

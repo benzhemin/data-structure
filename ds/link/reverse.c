@@ -3,7 +3,9 @@
 #include "link.h"
 
 void reverse(Node **proot){
+	//p做向后循环
 	Node *p = *proot;
+	//header作为新链表头指针
 	Node *header = NULL;
 
 	while(p!=NULL){
