@@ -16,6 +16,18 @@ void search_delete(Node **root, ElemType e){
 	}
 }
 
+void insert_elem(Node **proot, ElemType e){
+	while(*proot!=NULL && (*proot)->data<e){
+		proot = &(*proot)->next;
+	}
+
+	Node *new_n = (Node *)malloc(sizeof(Node));
+	new_n->data = e;
+
+	new_n->next = *proot;
+	*proot = new_n;
+}
+
 int main(void){
 	int a[] = {2, 4, 5, 5, 8, 9};
 	Node *root = NULL;
@@ -44,7 +56,10 @@ int main(void){
 	}
 	*/
 
-	
+	int d;
+	scanf("%d", &d);
+	insert_elem(&root, d);
+	print_link(root);
 	
 	return 0;
 }
