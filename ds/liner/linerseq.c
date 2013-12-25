@@ -77,7 +77,7 @@ Status locate_elem_linerseq(SqList *sq, int e, CMP_ELEM cmp_elem){
 		return ERROR;
 	}
 
-	return p-sq->elem;
+	return (int)(p-sq->elem);
 }
 
 void print_linerseq(SqList *sq){

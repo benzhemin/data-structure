@@ -25,4 +25,6 @@ Status enqueue(QueueLink *Q, ElemType e);
 
 Status dequeue(QueueLink *Q, ElemType *e);
 
+void print_queue(QueueLink *Q);
+
 #endif
