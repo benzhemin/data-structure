@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "stackseq.h"
+#include "stack_seq.h"
 
 Status init_stack(SqStack *s){
 	s->base = (ElemType *)malloc(sizeof(ElemType) * STACK_INIT_SIZE);
