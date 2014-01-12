@@ -1,14 +1,22 @@
 #ifndef _TREE_H
 #define _TREE_H
 
-#include "../predef.h"
+#include "predef.h"
 
 typedef int ElemType;
 
-typedef struct _TNode{
-	ElemType data;
-	struct _TNode *lchild;
-	struct _TNode *rchild;
-} TNode;
+typedef struct _Tree{
+	int data;
+	struct _Tree *lchild;
+	struct _Tree *rchild;
+} Tree;
+
+void create_tree(Tree **PT);
+
+void pre_order_traverse(Tree *T);
+
+void in_order_traverse(Tree *T);
+
+void inorder_traverse(Tree *T);
 
 #endif
