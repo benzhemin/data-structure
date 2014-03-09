@@ -5,18 +5,20 @@
 
 typedef int ElemType;
 
-typedef struct _Tree{
+typedef struct _BiTree{
 	int data;
-	struct _Tree *lchild;
-	struct _Tree *rchild;
-} Tree;
+	struct _BiTree *lchild;
+	struct _BiTree *rchild;
+} BiTree;
 
-void create_tree(Tree **PT);
+void visit_node(BiTree *T);
 
-void pre_order_traverse(Tree *T);
+void create_bitree(BiTree **T);
 
-void in_order_traverse(Tree *T);
+void pre_order_traverse(BiTree *T);
 
-void inorder_traverse(Tree *T);
+void in_order_traverse(BiTree *T);
+
+void after_order_traverse(BiTree *T);
 
 #endif

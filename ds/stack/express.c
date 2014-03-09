@@ -31,7 +31,6 @@ void input_express(char *a){
 char get_priority(char a, char b){
 	char *pa = strchr(validstr, a);
 	char *pb = strchr(validstr, b);
-	-
 	assert(pa!=NULL);
 	assert(pb!=NULL);
 
