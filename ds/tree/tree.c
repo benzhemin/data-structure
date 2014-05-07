@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <assert.h>
 #include "tree.h"
-#include "stack_seq_generic.h"
 
 void create_bitree(BiTree **T){
     char ch;

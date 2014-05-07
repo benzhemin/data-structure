@@ -7,6 +7,7 @@ typedef int ElemType;
 
 typedef struct _BiTree{
 	int data;
+	int level;
 	struct _BiTree *lchild;
 	struct _BiTree *rchild;
 } BiTree;
