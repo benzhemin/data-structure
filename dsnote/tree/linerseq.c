@@ -7,6 +7,7 @@
 
 SqList *create_linerseq(SqList **pL, unsigned size){
     SqList *L = malloc(sizeof(SqList));
+    assert(L!=NULL);
     init_linerseq(L, size);
     
     if (pL != NULL) {
@@ -19,6 +20,7 @@ void init_linerseq(SqList *L, unsigned size){
     L->typesize = size;
     L->elem = malloc(size * LIST_INIT_SIZE);
     assert(L->elem != NULL);
+    memset(L->elem, 0, size * LIST_INIT_SIZE);
     
     L->listsize = LIST_INIT_SIZE;
     L->length = 0;
@@ -39,13 +41,36 @@ void check_needs_expand(SqList *L){
 }
 
 void insert_linerseq(SqList *L, void *pe){
-    unsigned size = L->typesize;
-    char *pelem = (char *)L->elem + size *L->length;
+    unsigned step = L->typesize;
+    char *pelem = (char *)L->elem + step*L->length;
     
     check_needs_expand(L);
     
-    memcpy(pelem, pe, size);
+    memcpy(pelem, pe, step);
     L->length += 1;
+}
+
+//insertion sort
+void sort_linerseq(SqList *L, int (*cmp)(void *p1, void *p2)){
+    unsigned step = L->typesize;
+    char *pe = (char *)L->elem;
+    
+    for (int i=1; i<L->length; i++) {
+        char *pa = pe + i*step;
+        for (int j=0; j<i; j++) {
+            char *pb = pe + j*step;
+            
+            if (cmp(pa, pb) < 0) {
+                char *pe = malloc(sizeof(step));
+                
+                memcpy(pe, pa, step);
+                memmove(pb+step, pb, (i-j)*step);
+                memcpy(pb, pe, step);
+                
+                free(pe);
+            }
+        }
+    }
 }
 
 // 1<=index<=L->length+1

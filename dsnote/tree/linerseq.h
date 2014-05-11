@@ -27,4 +27,6 @@ void insert_linerseq(SqList *L, void *pe);
 
 bool insert_linerseq_index(SqList *L, int index, void *pe);
 
+void sort_linerseq(SqList *L, int (*cmp)(void *p1, void *p2));
+
 #endif
