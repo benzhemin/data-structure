@@ -7,6 +7,8 @@
 #define FALSE 0
 #endif
 
+#define ARRAY_LEN(x) sizeof(x)/sizeof(x[0])
+
 #define LIST_INIT_SIZE 100
 #define LIST_INCREMENT 10
 
@@ -15,7 +17,7 @@ typedef struct {
     unsigned typesize;
     unsigned length;
     unsigned listsize;
-}SqList;
+} SqList;
 
 SqList *create_linerseq(SqList **pL, unsigned size);
 
