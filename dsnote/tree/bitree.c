@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "bitree.h"
 
-void create_preorder_bitree(BiTree **T){
+void create_preorder_bitree(BiTree **T, ){
 	char ch;
 	scanf("%c", &ch);
 

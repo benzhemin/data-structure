@@ -29,6 +29,10 @@ void init_linerseq(SqList *L, unsigned size);
 
 void insert_linerseq(SqList *L, void *p);
 
+bool linerseq_empty(SqList *L);
+
+void linserseq_remove_first(SqList *L, void *pe);
+
 void sort_linerseq(SqList *L, int (*cmp_value)(void *pa, void *pb));
 
 void print_linerseq(SqList *L, void (*visit_elem)(int index, void *pe));
