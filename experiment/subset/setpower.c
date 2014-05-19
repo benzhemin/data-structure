@@ -2,7 +2,6 @@
 #include <stdlib.h>
 
 #include "queue.h"
-#include "cstdstring.h"
 
 typedef struct {
     SqQueue *pickedQueue;
@@ -88,7 +87,7 @@ void build_tree(BiTreePtr pT){
     desotry_queue_seq(Q);
 }
 
-void traverse_tree(BiTreePtr T){
+static void traverse_tree(BiTreePtr T){
     if (T!=NULL) {
         if (T->lchild==NULL && T->rchild==NULL) {
             print_queue_seq(T->pdata->pickedQueue, visit_queue_elem);
