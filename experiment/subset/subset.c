@@ -45,8 +45,8 @@ void build_treeset(BiTreePtr *PT, SqQueue *unpickedQueue, SqQueue *pickedQueue){
         SqQueue *new_lchildQ = copy_queue_seq(pickedQueue);
         SqQueue *new_rchildQ = copy_queue_seq(pickedQueue);
             
-        print_queue_seq(unpickedQueue, visit_queue_elem);
-        print_queue_seq(pickedQueue, visit_queue_elem);
+        //print_queue_seq(unpickedQueue, visit_queue_elem);
+        //print_queue_seq(pickedQueue, visit_queue_elem);
             
         char ch;
         
@@ -57,7 +57,7 @@ void build_treeset(BiTreePtr *PT, SqQueue *unpickedQueue, SqQueue *pickedQueue){
         dequeue_seq(new_upQ, &ch);
         enqueue_seq(new_lchildQ, &ch);
         
-        if (!queue_seq_empty(new_upQ)) {
+        if (!queue_seq_empty(unpickedQueue)) {
             build_treeset(&T->lchild, new_upQ, new_lchildQ);
             build_treeset(&T->rchild, new_upQ, new_rchildQ);
         }
@@ -88,7 +88,7 @@ int main(void){
     
     build_treeset(&T, upQ, pQ);
     
-    //traverse_tree(T);
+    traverse_tree(T);
     
     desotry_queue_seq(upQ);
     desotry_queue_seq(pQ);
