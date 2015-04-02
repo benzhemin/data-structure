@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "cstdstring.h"
 #include "queue.h"
 
 typedef struct {
@@ -33,7 +32,7 @@ void init_set(SqQueue *Q){
     char *p = input;
     fgets(input, sizeof(input), stdin);
     
-    while (*p!='\n' && &p!='\0') {
+    while (*p!='\n' && *p!='\0') {
         enqueue_seq(Q, p);
         p++;
     }
@@ -44,10 +43,6 @@ void build_treeset(BiTreePtr *PT, SqQueue *unpickedQueue, SqQueue *pickedQueue){
         SqQueue *new_upQ = copy_queue_seq(unpickedQueue);
         SqQueue *new_lchildQ = copy_queue_seq(pickedQueue);
         SqQueue *new_rchildQ = copy_queue_seq(pickedQueue);
-            
-        //print_queue_seq(unpickedQueue, visit_queue_elem);
-        //print_queue_seq(pickedQueue, visit_queue_elem);
-            
         char ch;
         
         BiTreePtr T = create_bitree();
