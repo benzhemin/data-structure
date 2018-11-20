@@ -19,6 +19,20 @@ void reverse(Node **proot){
 	*proot = header;
 }
 
+void reverse2(Node **root) {
+  Node *pn = *root;
+	Node *header = NULL;
+
+  while (pn != NULL) {
+    Node *cur = pn;
+    pn = pn->next;
+    
+    *root = cur;
+    cur->next = header;
+		header = cur;
+  }
+}
+
 int main(void){
 	int a[] = {2, 4, 5, 5, 8, 9};
 	Node *root = NULL;
@@ -26,7 +40,7 @@ int main(void){
 	cp_array_link(&root, a, ARRAY_LEN(a));
 	print_link(root);
 
-	reverse(&root);
+	reverse2(&root);
 	print_link(root);
 
 	return 0;
