@@ -21,15 +21,14 @@ void reverse(Node **proot){
 
 void reverse2(Node **root) {
   Node *pn = *root;
-	Node *header = NULL;
+	*root = NULL;
 
   while (pn != NULL) {
     Node *cur = pn;
     pn = pn->next;
     
-    *root = cur;
-    cur->next = header;
-		header = cur;
+    cur->next = *root;
+		*root = cur;
   }
 }
 
